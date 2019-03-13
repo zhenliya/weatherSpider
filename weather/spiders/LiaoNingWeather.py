@@ -20,7 +20,7 @@ class LiaoningweatherSpider(scrapy.Spider):
 
     def parse(self, response):
         items = []
-        city = response.xpath('//div[@class="citychk"]/dl/dt/a/b/text()').extract()
+
         region = response.xpath('//div[@class="citychk"]/dl/dd/a/text()').extract()
         regionUrls = response.xpath('//div[@class="citychk"]/dl/dd/a/@href').extract()
 
@@ -88,7 +88,7 @@ class LiaoningweatherSpider(scrapy.Spider):
         temperature = response.xpath('//table/tr[position()>1]/td[3]/text()').extract()
         windConditions = response.xpath('//table/tr[position()>1]/td[4]/text()').extract()
 
-        day = day = re.findall(r'\d+[\u4e00-\u9fa5_a-zA-Z0-9]+', str(day))
+        day = re.findall(r'\d+[\u4e00-\u9fa5_a-zA-Z0-9]+', str(day))
 
         for i in range(len(day)):
         # for i in range(3):
